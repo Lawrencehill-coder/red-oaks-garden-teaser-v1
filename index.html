@@ -1,1 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Oak Gardens — Allion Fund 1, LP Debt Capital Opportunity</title>
+<style>
+  :root{
+    --paper:#F6F6F3;
+    --panel:#ECECE8;
+    --panel-2:#E2E2DD;
+    --ink:#1E1E1C;
+    --body:#47473F;
+    --muted:#8B8B82;
+    --hair:#D3D3CB;
+    --hair-strong:#B7B7AC;
+    --btn:#33332F;
+    --btn-hover:#1E1E1C;
+    --flash:#DCE8DC;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--body);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:15px;
+    line-height:1.6;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:48px 28px 80px;}
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:6px;}
+  .masthead h1{font-family:Georgia,'Times New Roman',serif;font-size:22px;letter-spacing:1px;margin:0;color:var(--ink);}
+  .masthead .tag{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+  .addr{font-size:12px;color:var(--muted);margin:10px auto 40px;text-align:center;max-width:600px;line-height:1.6;word-wrap:break-word;}
+  .clearfix::after{content:"";display:table;clear:both;}
+  .opportunity-logo{float:right;width:132px;height:auto;margin:2px 0 16px 22px;opacity:0.94;}
 
+  .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:bold;}
+  .hero-title{font-family:Georgia,'Times New Roman',serif;font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 22px;}
+
+  .hero-photo{width:100%;height:340px;object-fit:cover;border:1px solid var(--hair-strong);margin-bottom:6px;background:var(--panel);}
+  .photo-credit{font-size:11px;color:var(--muted);margin:0 0 40px;}
+  .photo-credit a{color:var(--muted);}
+
+  section{margin-bottom:44px;}
+  h2.section-title{font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--hair);padding-bottom:8px;margin:0 0 16px;font-weight:normal;}
+  p{margin:0 0 12px;}
+
+  ul.plain{list-style:none;margin:0;padding:0;}
+  ul.plain li{position:relative;padding-left:16px;margin-bottom:8px;}
+  ul.plain li:before{content:"\2013";position:absolute;left:0;color:var(--muted);}
+  a{color:var(--ink);}
+  a:hover{color:var(--btn-hover);}
+  @keyframes addrPulse{
+    0%, 100% { color:#1a56db; text-decoration-color:#1a56db; }
+    50% { color:#4d8bff; text-decoration-color:#4d8bff; }
+  }
+  @keyframes dotPulse{
+    0%, 100% { background:#1a56db; box-shadow:0 0 0 0 rgba(26,86,219,0.35); }
+    50% { background:#4d8bff; box-shadow:0 0 0 4px rgba(26,86,219,0); }
+  }
+  a.addr-link{
+    color:#1a56db;
+    font-weight:bold;
+    text-decoration:underline;
+    text-underline-offset:2px;
+    animation:addrPulse 2.2s ease-in-out infinite;
+    position:relative;
+    padding-left:14px;
+  }
+  a.addr-link::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:50%;
+    width:6px;
+    height:6px;
+    margin-top:-3px;
+    background:#1a56db;
+    border-radius:50%;
+    animation:dotPulse 2.2s ease-in-out infinite;
+  }
+  a.addr-link:hover{color:#0d3aa8;text-decoration-color:#0d3aa8;animation:none;}
+  a.addr-link:hover::before{background:#0d3aa8;animation:none;box-shadow:none;}
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px;}
+  .gallery img{width:100%;height:120px;object-fit:cover;border:1px solid var(--hair-strong);display:block;background:var(--panel);}
+
+  .floorplan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .floorplan-card{border:1px solid var(--hair-strong);background:#fff;padding:10px;position:relative;}
+  .floorplan-card::before{content:"";position:fixed;inset:0;background:rgba(20,20,18,0);pointer-events:none;z-index:998;transition:background 0.18s ease;}
+  .floorplan-card:hover::before{background:rgba(20,20,18,0.6);}
+  .floorplan-card img{width:100%;height:auto;display:block;border:1px solid var(--hair);margin-bottom:8px;cursor:zoom-in;transition:transform 0.18s ease, box-shadow 0.18s ease;position:relative;z-index:1;}
+  .floorplan-card:hover img{
+    position:fixed;
+    top:50%;left:50%;
+    width:min(80vw, 620px);
+    height:auto;
+    max-height:88vh;
+    transform:translate(-50%,-50%);
+    z-index:999;
+    box-shadow:0 24px 64px rgba(0,0,0,0.45);
+    border:2px solid var(--ink);
+    background:#fff;
+    object-fit:contain;
+  }
+  .floorplan-card .fp-name{font-family:Georgia,'Times New Roman',serif;font-size:14px;color:var(--ink);margin:0 0 2px;font-weight:bold;}
+  .floorplan-card .fp-specs{font-size:11px;color:var(--muted);margin:0 0 4px;}
+  .floorplan-card .fp-hint{font-size:10px;color:var(--muted);font-style:italic;margin:0;}
+
+  .ledger{border:1px solid var(--hair-strong);background:#fff;}
+  .ledger-row{display:grid;grid-template-columns:1.6fr 1fr;align-items:center;border-bottom:1px solid var(--hair);padding:10px 14px;transition:background 600ms ease;}
+  .ledger-row:last-child{border-bottom:none;}
+  .ledger-row.shaded{background:var(--panel);}
+  .ledger-row .label{font-size:13px;color:var(--body);}
+  .ledger-row .label .hint{display:block;font-size:11px;color:var(--muted);margin-top:2px;}
+  @keyframes adjustFlash{
+    0%, 100% { color: var(--muted); }
+    50% { color: #2E6FD9; }
+  }
+  .hint .flash{font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;animation:adjustFlash 1.6s ease-in-out infinite;}
+  .hint.flash-inline{display:inline;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;font-size:11px;color:var(--muted);margin-left:6px;animation:adjustFlash 1.6s ease-in-out infinite;}
+  .ledger-row .val{text-align:right;font-family:'Courier New',monospace;font-size:15px;font-weight:bold;color:var(--ink);font-variant-numeric:tabular-nums;}
+  .ledger-row.editable .val input{
+    width:120px;text-align:right;font-family:'Courier New',monospace;font-size:15px;font-weight:bold;
+    color:var(--ink);border:1px solid var(--hair-strong);background:#fff;padding:5px 8px;
+  }
+  .ledger-row.editable .val input:focus{outline:none;border-color:var(--ink);}
+  .ledger-row.flash{background:var(--flash) !important;}
+  .ledger-note{font-size:11px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--hair);}
+
+  .calc{border:1px solid var(--hair-strong);background:#fff;padding:20px;}
+  .calc-input-row{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .calc-input-row label{font-size:13px;color:var(--body);flex-shrink:0;}
+  .calc-input-row .prefix{font-family:'Courier New',monospace;font-size:15px;color:var(--muted);}
+  .calc-input-row input{
+    flex:1;font-family:'Courier New',monospace;font-size:16px;font-weight:bold;color:var(--ink);
+    border:1px solid var(--hair-strong);background:#fff;padding:8px 10px;
+  }
+  .calc-input-row input:focus{outline:none;border-color:var(--ink);}
+  .calc-out{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair-strong);}
+  .calc-out div{background:#fff;padding:14px;}
+  .calc-out .n{font-family:'Courier New',monospace;font-size:22px;font-weight:bold;color:var(--ink);display:block;font-variant-numeric:tabular-nums;}
+  .calc-out .l{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);}
+  .calc-disclaimer{font-size:11px;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--hair);}
+
+  .city-card{border:1px solid var(--hair-strong);background:var(--panel);padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .city-card .t{font-size:14px;color:var(--ink);font-weight:bold;margin:0 0 4px;}
+  .city-card .d{font-size:12px;color:var(--muted);margin:0;}
+  a.btn{
+    display:inline-block;white-space:nowrap;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;
+    color:#fff;background:var(--btn);padding:10px 16px;text-decoration:none;border:1px solid var(--btn);
+  }
+  a.btn:hover{background:var(--btn-hover);}
+
+  .cta{border:1px solid var(--hair-strong);background:var(--panel-2);padding:24px;margin-top:8px;}
+  .cta .t{font-family:Georgia,serif;font-size:18px;color:var(--ink);margin:0 0 10px;}
+  .cta p{font-size:13px;color:var(--body);margin:0;}
+
+  .disclaimer{font-size:11px;color:var(--muted);margin-top:36px;padding-top:16px;border-top:1px solid var(--hair);font-style:italic;}
+  .version{font-size:11px;color:var(--muted);margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <h1>ALLION FUND 1, LP</h1>
+    <span class="tag">Debt Capital Opportunity</span>
+  </div>
+  <div class="addr">A Regulation D Rule 506(c) Real Estate Debt Fund &nbsp;·&nbsp; Sponsored by Pedison USA Corporation, Structured Finance &amp; Capital Solutions &nbsp;·&nbsp; Gateway Tower, 8111 LBJ Frwy, Suite 110, Dallas, TX 75251</div>
+
+  <div class="eyebrow">Red Oak, Texas · Ellis County</div>
+  <h1 class="hero-title">Red Oak Gardens<br>18 Homes Subdivision</h1>
+
+  <img class="hero-photo" src="122-yvonne-front-1-web.jpg" alt="122 Yvonne St exterior, Red Oak Gardens">
+  <p class="photo-credit">Property photography: on-site photos, 122 Yvonne St, Red Oak Gardens.</p>
+
+  <section class="clearfix">
+    <h2 class="section-title">The Opportunity</h2>
+    <img src="allion-logo.png" alt="Allion Fund 1, LP" class="opportunity-logo">
+    <p>Allion Fund 1, LP is deploying $5,000,000 in debt capital to complete construction and bring the remaining homes in the Red Oak Gardens subdivision to market. Horizontal infrastructure and the model home are complete. Three additional homes are now under active construction. Five lots have already sold to another builder, reducing the fund's remaining exposure within the subdivision. Existing senior capital is in place and verified against official bank payoff statements.</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">The Property</h2>
+    <div class="gallery">
+      <img src="08-entryway-web.jpg" alt="122 Yvonne St entryway">
+      <img src="09-entryway-web.jpg" alt="122 Yvonne St entryway, alternate angle">
+      <img src="14-kitchen-web.jpg" alt="Kitchen, 122 Yvonne St">
+      <img src="16-kitchen-nook-web.jpg" alt="Kitchen and nook, 122 Yvonne St">
+      <img src="05-primary-bath-web.jpg" alt="Second primary bath, 122 Yvonne St">
+      <img src="27-primary-view-web.jpg" alt="Primary bedroom, 122 Yvonne St">
+      <img src="30-gameroom-web.jpg" alt="Gameroom, 122 Yvonne St">
+    </div>
+    <p class="photo-credit">Photos represent completed and in-progress homes within the Red Oak Gardens subdivision. Builder: <a href="https://jewelhomestx.com/red-oak-gardens/" target="_blank" rel="noopener">Jewel Homes</a></p>
+    <video class="hero-photo" style="height:auto;" controls preload="metadata">
+      <source src="122_Yvonne_St_Drone_Video-web.mp4" type="video/mp4">
+      Your browser does not support embedded video. The file is included alongside this document as 122_Yvonne_St_Drone_Video-web.mp4.
+    </video>
+    <p class="photo-credit">Aerial drone footage, 122 Yvonne St, Red Oak Gardens.</p>
+    <div class="city-card">
+      <div>
+        <p class="t">Interactive 3D walkthrough</p>
+        <p class="d">122 Yvonne St, full property tour</p>
+      </div>
+      <a class="btn" href="https://www.zillow.com/view-imx/7274bcc0-da89-407b-ae23-9be046a8f1e1?setAttribution=mls&wl=true&initialViewType=pano&utm_source=dashboard" target="_blank" rel="noopener">Launch 3D tour ↗</a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Construction Progress</h2>
+    <p>Site work underway, aerial view. Fencing, road base, and lot grading in place ahead of vertical construction.</p>
+    <img class="hero-photo" style="height:auto;" src="construction-progress-1-web.jpg" alt="Aerial photo of Red Oak Gardens site under construction">
+    <p class="photo-credit">Drone photo, site progress.</p>
+    <img class="hero-photo" style="height:auto;" src="construction-progress-2-web.jpg" alt="Aerial photo of Red Oak Gardens site under construction, wider view">
+    <p class="photo-credit">Drone photo, site progress, wider view.</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Site Plan</h2>
+    <p>27 homesites across Yvonne Street and Emma Street, arranged around Johnny Drive.</p>
+    <img class="hero-photo" style="height:auto;" src="RED_OAK_GARDENS_SITEPLAN-web.jpg" alt="Red Oak Gardens site plan showing lot layout along Yvonne Street, Emma Street, and Johnny Drive">
+  </section>
+
+  <section>
+    <h2 class="section-title">Standard Inclusions</h2>
+    <p>Every home in Red Oak Gardens is built to the same standard: quartz countertops, stainless Whirlpool appliances, tankless water heaters, a 6-year foundation warranty on an individually engineered post-tension monolithic foundation, and EV charging and generator-ready electrical as standard. Full inclusions list below.</p>
+    <img class="hero-photo" style="height:auto;" src="STANDARD-INCLUSIONS-web.jpg" alt="Jewel Homes standard amenities and inclusions list">
+  </section>
+
+  <section>
+    <h2 class="section-title">Verified Properties</h2>
+    <p>Homes completed or under construction as of August 2026:</p>
+    <ul class="plain">
+      <li><a class="addr-link" href="https://www.google.com/maps/place/?q=place_id:ChIJmbM4-yLrToYRozlGX__ySFs" target="_blank" rel="noopener">117 Yvonne St, Red Oak, TX 75154</a></li>
+      <li><a class="addr-link" href="https://www.google.com/maps/place/?q=place_id:ChIJz45_9yLrToYRSvF9XpCYhkc" target="_blank" rel="noopener">122 Yvonne St, Red Oak, TX 75154</a></li>
+      <li><a class="addr-link" href="https://www.google.com/maps/place/?q=place_id:ChIJRaWv9iLrToYRLeicCxJRXtI" target="_blank" rel="noopener">130 Yvonne St, Red Oak, TX 75154</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-title">Floorplan Options</h2>
+    <p>Seven floorplans available across the subdivision, each 4 bedrooms.</p>
+    <div class="floorplan-grid">
+      <div class="floorplan-card">
+        <img src="diamond.jpg" alt="Diamond Plan floorplan, Red Oak Gardens">
+        <p class="fp-name">Diamond</p>
+        <p class="fp-specs">2,278 ft² &nbsp;·&nbsp; 4 bed &nbsp;·&nbsp; 3 bath &nbsp;·&nbsp; single story</p>
+        <p class="fp-hint">Hover to enlarge</p>
+      </div>
+      <div class="floorplan-card">
+        <img src="emerald.jpg" alt="Emerald Plan floorplan, Red Oak Gardens">
+        <p class="fp-name">Emerald</p>
+        <p class="fp-specs">2,284 ft² &nbsp;·&nbsp; 4 bed &nbsp;·&nbsp; 3 bath &nbsp;·&nbsp; two story, attic/bonus</p>
+        <p class="fp-hint">Hover to enlarge</p>
+      </div>
+      <div class="floorplan-card">
+        <img src="jade.jpg" alt="Jade Plan floorplan, Red Oak Gardens">
+        <p class="fp-name">Jade</p>
+        <p class="fp-specs">2,474 ft² &nbsp;·&nbsp; 4 bed &nbsp;·&nbsp; 3 bath &nbsp;·&nbsp; single story</p>
+        <p class="fp-hint">Hover to enlarge</p>
+      </div>
+      <div class="floorplan-card">
+        <img src="pearl.jpg" alt="Pearl Plan floorplan, Red Oak Gardens">
+        <p class="fp-name">Pearl</p>
+        <p class="fp-specs">2,567 ft² &nbsp;·&nbsp; 4 bed &nbsp;·&nbsp; 3.5 bath &nbsp;·&nbsp; two story, media/game room</p>
+        <p class="fp-hint">Hover to enlarge</p>
+      </div>
+      <div class="floorplan-card">
+        <img src="ruby.jpg" alt="Ruby Plan floorplan, Red Oak Gardens">
+        <p class="fp-name">Ruby</p>
+        <p class="fp-specs">2,248 ft² &nbsp;·&nbsp; 4 bed &nbsp;·&nbsp; 3 bath &nbsp;·&nbsp; single story</p>
+        <p class="fp-hint">Hover to enlarge</p>
+      </div>
+      <div class="floorplan-card">
+        <img src="sapphire.jpg" alt="Sapphire Plan floorplan, Red Oak Gardens">
+        <p class="fp-name">Sapphire</p>
+        <p class="fp-specs">2,306 ft² &nbsp;·&nbsp; 4 bed &nbsp;·&nbsp; 3 bath &nbsp;·&nbsp; two story, attic/bonus</p>
+        <p class="fp-hint">Hover to enlarge</p>
+      </div>
+      <div class="floorplan-card">
+        <img src="topaz.jpg" alt="Topaz Plan floorplan, Red Oak Gardens">
+        <p class="fp-name">Topaz</p>
+        <p class="fp-specs">2,714 ft² &nbsp;·&nbsp; 4 bed &nbsp;·&nbsp; 2.5 bath &nbsp;·&nbsp; two story, loft</p>
+        <p class="fp-hint">Hover to enlarge</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Project Ledger — Adjust the Figures</h2>
+    <div class="ledger" id="ledger">
+      <div class="ledger-row editable shaded">
+        <div class="label">Homes remaining to build &amp; sell<span class="hint"><span class="flash">Adjust</span> — max 27 (subdivision total per site plan)</span></div>
+        <div class="val"><input type="number" id="in-homes" value="18" min="1" max="27" step="1"></div>
+      </div>
+      <div class="ledger-row editable">
+        <div class="label">Construction cost per home<span class="hint"><span class="flash">Adjust</span></span></div>
+        <div class="val"><span class="prefix">$</span><input type="text" inputmode="decimal" class="money" id="in-cost" value="250,000.00"></div>
+      </div>
+      <div class="ledger-row editable shaded">
+        <div class="label">Projected sale price per home<span class="hint"><span class="flash">Adjust</span></span></div>
+        <div class="val"><span class="prefix">$</span><input type="text" inputmode="decimal" class="money" id="in-sale" value="625,000.00"></div>
+      </div>
+      <div class="ledger-row" id="row-total-cost">
+        <div class="label">Total remaining construction cost</div>
+        <div class="val" id="out-total-cost">$4,500,000.00</div>
+      </div>
+      <div class="ledger-row shaded" id="row-total-rev">
+        <div class="label">Projected total sales revenue</div>
+        <div class="val" id="out-total-rev">$11,250,000.00</div>
+      </div>
+      <div class="ledger-row editable">
+        <div class="label">Debt capital being raised (Allion Fund 1, LP)<span class="hint"><span class="flash">Adjust</span></span></div>
+        <div class="val"><span class="prefix">$</span><input type="text" inputmode="decimal" class="money" id="in-raise" value="5,000,000.00"></div>
+      </div>
+    </div>
+    <p class="ledger-note">Figures are project-level estimates as of August 2026 and are subject to change. Five lots within the subdivision have already sold to another builder; adjust the homes figure above if you want to reflect that reduction. Existing senior capital position (PlainsCapital Bank and private lender balances) is summarized, not itemized, at this stage of discussion.</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Position Sizing Calculator</h2>
+    <div class="calc">
+      <p style="margin:0 0 16px;font-size:13px;color:var(--body);">Allion Fund 1, LP targets a preferred return of <strong>12% to 15%</strong> on invested capital, senior to project-level equity. This is a targeted range set by the fund's governing documents, not a guaranteed or insured return.</p>
+      <div class="calc-input-row">
+        <label for="in-invest">Your prospective investment <span class="hint flash-inline">Adjust</span></label>
+        <span class="prefix">$</span>
+        <input type="text" inputmode="decimal" class="money" id="in-invest" value="1,000,000.00">
+      </div>
+      <div class="calc-out">
+        <div><span class="n" id="out-pct">20.0%</span><span class="l">Of the <span id="out-raise-label">$5,000,000.00</span> raise</span></div>
+        <div><span class="n" id="out-homes">4.0</span><span class="l">Homes' worth of construction capital</span></div>
+      </div>
+      <p class="calc-disclaimer">Position size (percent of raise) and homes-equivalent are shown as a percentage and a unit count, not as dollar figures — converting them to $X,XXX,XXX.XX would misstate a share of the raise as a currency amount. Every actual dollar figure on this page, including the ones above, follows the same $X,XXX,XXX.XX format. This calculator illustrates position sizing only. It does not calculate a return on your investment. This is a debt fund position targeting a preferred return, not a guaranteed or insured return, and not a bank deposit. Preferred return is paid according to Allion Fund 1, LP's governing documents and is subject to fund performance. Final structure and terms are set through the fund's offering documents and subscription agreement.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Why Now</h2>
+    <ul class="plain">
+      <li>Horizontal infrastructure and the model home are complete; three homes are under active construction.</li>
+      <li>Five lots have already sold to another builder, reducing the fund's remaining exposure within the subdivision.</li>
+      <li>Senior debt position independently verified against PlainsCapital Bank payoff statements.</li>
+      <li>Pedison USA is engaged directly as capital formation and structuring partner on this raise, with compensation tied to a successful close.</li>
+      <li>Debt capital is being sized now to fund the remaining homes through completion and sale.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-title">Fund Structure</h2>
+    <p>Capital is raised through Allion Fund 1, LP, a Regulation D Rule 506(c) real estate debt fund. Investors hold a debt position targeting a preferred return of 12% to 15%, senior to project-level equity. The Red Oak Gardens development is one of the assets financed through the fund. Investment is limited to verified accredited investors as required under Rule 506(c). Final terms are set through the fund's offering documents and subscription agreement, not through this summary.</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">The Location</h2>
+    <p>Red Oak Gardens sits in Red Oak, Texas, in northern Ellis County, roughly 20 minutes south of Dallas and 30 minutes southeast of Fort Worth, with quick access to I-35E and the wider Dallas-Fort Worth Metroplex.</p>
+    <div class="city-card">
+      <div>
+        <p class="t">City of Red Oak — State of the City overview</p>
+        <p class="d">Official city video, growth and community overview</p>
+      </div>
+      <a class="btn" href="https://www.youtube.com/watch?v=ZpFH0aPXzew" target="_blank" rel="noopener">Watch video ↗</a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">About Allion Fund 1, LP</h2>
+    <p>Allion Fund 1, LP is a Regulation D Rule 506(c) real estate debt fund sponsored by Pedison USA Corporation, a Dallas-based private lending and capital formation firm. The fund deploys debt capital into real estate developments, working directly with developers, borrowers, and capital partners to bring projects like Red Oak Gardens to completion.</p>
+  </section>
+
+  <div class="cta">
+    <p class="t">Call us and let's discuss your investment interest.</p>
+    <p>Allion Fund 1, LP<br>
+    (214) 710-1233 &nbsp;·&nbsp; www.pedisonusa.com</p>
+    <p style="margin-top:14px;">
+      <a class="btn" href="https://pedisonusa.com/allionfund/index.html" target="_blank" rel="noopener">Learn More About Allion Fund 1, LP ↗</a>
+    </p>
+    <p style="font-size:11px;color:var(--muted);margin-top:10px;">This link leads to Allion Fund 1, LP's fund page. Accredited investor status is verified before any subscription is accepted.</p>
+  </div>
+
+  <p class="disclaimer">This material is general solicitation content for Allion Fund 1, LP, offered pursuant to Regulation D Rule 506(c). It is for informational purposes only and is not itself an offer to sell or a solicitation of an offer to buy any security; any actual offer is made only through the fund's definitive offering documents, including its Private Placement Memorandum and subscription agreement. Investment is limited to purchasers verified as accredited investors before any sale, as required under Rule 506(c). Interests in Allion Fund 1, LP have not been registered under the Securities Act of 1933 or any state securities laws and are offered in reliance on an exemption from registration; neither the SEC nor any state securities regulator has reviewed or approved this offering. An investment in the fund involves substantial risk, including the possible loss of some or all invested principal, and interests are illiquid, subject to substantial resale and transfer restrictions, and not suitable for all investors. The referenced 12% to 15% preferred return is a target only, is not guaranteed, and actual results may differ materially. Project figures are estimates as of August 2026 and subject to change. Prospective investors should review the fund's offering documents in full and consult their own legal, tax, and financial advisors before investing.</p>
+  <p class="version">v3.0 — 08/07/2026 — LH</p>
+
+</div>
+
+<script>
+function fmt(n){
+  n = Number(n) || 0;
+  return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+function parseMoney(v){
+  return parseFloat(String(v).replace(/[^0-9.\-]/g, '')) || 0;
+}
+function formatMoneyField(el){
+  el.value = parseMoney(el.value).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+function flash(el){
+  el.classList.add('flash');
+  setTimeout(function(){ el.classList.remove('flash'); }, 650);
+}
+
+var inHomes = document.getElementById('in-homes');
+var inCost  = document.getElementById('in-cost');
+var inSale  = document.getElementById('in-sale');
+var inRaise = document.getElementById('in-raise');
+var inInvest = document.getElementById('in-invest');
+
+var outTotalCost = document.getElementById('out-total-cost');
+var outTotalRev  = document.getElementById('out-total-rev');
+var rowTotalCost = document.getElementById('row-total-cost');
+var rowTotalRev  = document.getElementById('row-total-rev');
+
+var outPct   = document.getElementById('out-pct');
+var outHomes = document.getElementById('out-homes');
+var outRaiseLabel = document.getElementById('out-raise-label');
+
+function recalcLedger(){
+  var homes = parseFloat(inHomes.value) || 0;
+  if (homes > 27) { homes = 27; inHomes.value = 27; }
+  if (homes < 1 && inHomes.value !== '') { homes = Math.max(homes, 0); }
+  var cost  = parseMoney(inCost.value);
+  var sale  = parseMoney(inSale.value);
+
+  outTotalCost.textContent = fmt(homes * cost);
+  outTotalRev.textContent  = fmt(homes * sale);
+  flash(rowTotalCost);
+  flash(rowTotalRev);
+
+  recalcCalculator();
+}
+
+function recalcCalculator(){
+  var raise  = parseMoney(inRaise.value);
+  var invest = parseMoney(inInvest.value);
+  var cost   = parseMoney(inCost.value);
+
+  var pct = raise > 0 ? (invest / raise) * 100 : 0;
+  var homesEquiv = cost > 0 ? (invest / cost) : 0;
+
+  outPct.textContent = pct.toFixed(1) + '%';
+  outHomes.textContent = homesEquiv.toFixed(1);
+  outRaiseLabel.textContent = fmt(raise);
+}
+
+// Live recalculation as digits are typed (raw parsing tolerates commas/$ already present)
+[inHomes, inCost, inSale].forEach(function(el){
+  el.addEventListener('input', recalcLedger);
+});
+[inRaise, inInvest].forEach(function(el){
+  el.addEventListener('input', recalcCalculator);
+});
+
+// Reformat money fields to $X,XXX,XXX.XX once the user leaves the field
+[inCost, inSale, inRaise, inInvest].forEach(function(el){
+  el.addEventListener('blur', function(){ formatMoneyField(el); });
+  formatMoneyField(el); // normalize formatting on load
+});
+
+recalcLedger();
+</script>
+
+</body>
+</html>
